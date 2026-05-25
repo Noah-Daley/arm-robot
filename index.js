@@ -8654,6 +8654,12 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       return 0;
     };
 
+  var _glfwGetWindowAttrib = (winid, attrib) => {
+      var win = GLFW.WindowFromId(winid);
+      if (!win) return 0;
+      return win.attributes[attrib];
+    };
+
   var _glfwInit = () => {
       if (GLFW.windows) return 1; // GL_TRUE
   
@@ -10283,6 +10289,8 @@ var wasmImports = {
   glfwGetTime: _glfwGetTime,
   /** @export */
   glfwGetVideoModes: _glfwGetVideoModes,
+  /** @export */
+  glfwGetWindowAttrib: _glfwGetWindowAttrib,
   /** @export */
   glfwInit: _glfwInit,
   /** @export */
